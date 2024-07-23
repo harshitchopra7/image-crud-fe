@@ -5,6 +5,7 @@ import "./App.css";
 import ImageCard from "./components/ImageCard/ImageCard";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
+import ImageUpload from "./components/ImageUpload/ImageUpload";
 
 // firebase
 import { getAuth } from "firebase/auth";
@@ -110,8 +111,15 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch("https://image-crud-be.onrender.com/fetch")
+      .then((data) => data.json())
+      .then((response) => console.log("response", response));
+  }, []);
+
   return (
     <div className="App">
+      <ImageUpload />
       {isUserLoggedIn ? (
         <div>
           <Navbar setIsUserLoggedIn={setIsUserLoggedIn} />
